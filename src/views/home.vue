@@ -1,13 +1,13 @@
 <template>
-
   <div class="d">
-    我是home页面
-    <p class="jha"></p>
+    我是home页213面
+    <p class="jha" @click="dds">212121</p>
   </div>
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <HelloWorld msg="" />
 </template>
 
 <script>
+import propxApi from '@/api/utils/index'
 export default {
   name: 'home',
   props: {
@@ -15,12 +15,24 @@ export default {
   },
   data() {
     return {
-      count: 633
+      count: 6339999
     }
   },
+  created() {
+    this.dds2({dd:2}).then((res) => {
+      console.log(`--DEBUG--res`,res)
+    })
+    this.login1({dd:999}).then((res) => {
+      console.log(`--DEBUG--res`,res)
+    })
+  },
   methods: {
+    ...propxApi('home',['dds2','login1','ddd']),
     dd() {
-      let d
+      this.login1()
+    },
+    dds() {
+      this.$router.push("/test")
     }
   }
 }

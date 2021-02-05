@@ -1,3 +1,11 @@
-export default {
-  a:'haha'
-}
+export default [
+  {
+    path: '/',
+    /* @vite-ignore */
+    component:  () => import(`../views/home.vue`),
+    /* @vite-ignore */
+    meta: {
+      haha:'222'
+    }
+  }
+]

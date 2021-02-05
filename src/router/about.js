@@ -1,3 +1,9 @@
-export default {
-  a:'haha'
-}
+export default [
+  {
+    path: '/about',
+    component: 'about',
+    meta: {
+      haha:'222'
+    }
+  },
+]
