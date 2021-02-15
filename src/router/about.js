@@ -1,7 +1,7 @@
 export default [
   {
     path: '/about',
-    component: 'about',
+    component: () => import(`../views/home.vue`),
     meta: {
       haha:'222'
     }

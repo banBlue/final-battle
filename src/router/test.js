@@ -1,7 +1,7 @@
 export default [
   {
     path: '/test',
-    component: 'test',
+    component: () => import(`../views/test.vue`),
     meta: {
       haha:'222'
     }
