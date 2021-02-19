@@ -3,7 +3,6 @@
     我是home页213面
     <p class="jha" @click="dds">212121</p>
   </div>
-  <HelloWorld msg="" />
 </template>
 
 <script>
