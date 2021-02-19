@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import ViteComponents from 'vite-plugin-components'
-const myPlugin = require("./myPlugin")
+const vitePluginRouterComponent = require("./vite-plugin-router-component")
 
 const path = require('path')
 
@@ -14,7 +14,7 @@ export default {
   },
   plugins: [
     vue(),
-    myPlugin(),
+    vitePluginRouterComponent(),
      ViteComponents({
       // relative paths to the directory to search for components.
       dirs: ['src/components'],
