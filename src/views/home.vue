@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import propxApi from '@/api/utils/index'
 export default {
   name: 'home',
   props: {
@@ -26,7 +25,7 @@ export default {
     })
   },
   methods: {
-    ...propxApi('home',['dds2','login1','ddd']),
+    ...$propxApi('home',['dds2','login1','ddd']),
     dd() {
       this.login1()
     },

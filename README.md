@@ -1,6 +1,16 @@
 # final-battle
 
 ### 关于api使用示例
+- 如何请求接口
+在vue文件method中如何使用即可,$propxApi已注册于window中
+```js
+methods: {
+  ...$propxApi('home',['dds2','login1','ddd']),
+  handle() {
+    this.login1()
+  },
+}
+```
 - axiosConfig 用于处理axios定义的一些配置
 - customData  用于处理用户自定义的一些参数
 ```js

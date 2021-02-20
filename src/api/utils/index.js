@@ -30,20 +30,22 @@ const handleApi =  (() => {
   }
 })()
 
-// 代理
-const propxApi = (spacename,apiArr) => {
-  const apiModule = {}
-  apiArr.forEach(item => {
-    apiModule[item] = async (data) => {
-      const promise = new Promise((resolve, reject) => {
-        handleApi(spacename,apiArr).then(res => {
-          res[item] ? resolve(handleRequest(res[item],data)) :reject(`没有这个接口:${item}`) // 获取到具体的函数
-        })
+export default {
+  install: app => {
+    // window下注册全局请求api
+    window.$propxApi = (spacename,apiArr) => {
+      const apiModule = {}
+      apiArr.forEach(item => {
+        apiModule[item] = async (data) => {
+          const promise = new Promise((resolve, reject) => {
+            handleApi(spacename,apiArr).then(res => {
+              res[item] ? resolve(handleRequest(res[item],data)) :reject(`没有这个接口:${item}`) // 获取到具体的函数
+            })
+          })
+          return promise
+        }
       })
-      return promise
+      return apiModule
     }
-  })
-  return apiModule
+  }
 }
-
-export default propxApi
