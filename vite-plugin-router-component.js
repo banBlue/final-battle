@@ -9,8 +9,9 @@ function compileFileToJS(code) {
     if(item.type === 'ObjectExpression') {
       item.properties.forEach(properties => {
         if(properties.key.name === 'component') {
-           //转换懒加载形式
-          properties.value =  {
+          const value = properties.value.value.startsWith('/') ? properties.value.value : '/' + properties.value.value
+           // 转换懒加载形式
+          properties.value = {
             "type": "ArrowFunctionExpression",
             "id": null,
             "params": [],
@@ -22,8 +23,8 @@ function compileFileToJS(code) {
               },
               "arguments": [{
                 "type": "Literal",
-                "value": `..${properties.value.value}`,
-                "raw": `'..${properties.value.value}'`
+                "value": `/src${value}`,
+                "raw": `'/src${value}'`
               }]
             },
             "generator": false,
@@ -34,7 +35,7 @@ function compileFileToJS(code) {
       })
     }
   })
-  return escodegen.generate(ast); //将对象转回字符串形式返回
+  return escodegen.generate(ast); // 将对象转回字符串形式返回
 }
 
 module.exports = () => {
